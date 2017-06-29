@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Real-Time 911 Forecast</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Google Maps API reference -->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=visualization"></script>
+    <script src="{{ url_for('static', filename='model_data/map.js') }}"></script>
+    <script src="{{ url_for('static', filename='model_data/map_loc.js') }}"> </script>
+    <!-- Google Maps API reference -->
+    
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/stylish-portfolio.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <style>
+
+      #mapdisplay {
+        height: 400px;
+        width: 100%;
+        text-align: center;
+       }
+
+    </style>
+
+    
+
+    <script src='/static/model_data/map_loc.js' ></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="#top" onclick=$("#menu-close").click();></a>
+            </li>
+            <li>
+                <a href="#top" onclick=$("#menu-close").click();>Home</a>
+            </li>
+            <li>
+                <a href="#about" onclick=$("#menu-close").click();>About</a>
+            </li>
+            <li>
+                <a href="#services" onclick=$("#menu-close").click();>Services</a>
+            </li>
+            <li>
+                <a href="#portfolio" onclick=$("#menu-close").click();>Portfolio</a>
+            </li>
+            <li>
+                <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>911 Forecast</h1>
+            <h3>Improving Emergency Responce</h3>
+            <br>
+            <a href="#about1a" class="btn btn-dark btn-lg">Real-Time Forecast</a>
+        </div>
+    </header>
+    <!-- Map -->
+
+    <!-- About -->
+    <section id="about" class="about">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+               
+                    <h2>Today's 911 calls (Montgomery County, PA) </h2>
+
+                    <h3>{{ time_now }}</h3>
+                    
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+    
+    <section id="contact" class="map1">
+        <br />
+        <small>
+
+            <div id="mapdisplay"></div>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYzfvxnS4GhK7bA65EQ4Foam5xk9GAfPg&callback=initMap">
+            </script>
+            <!--REMI MAP--> 
+
+        </small>
+    </section>
+
+     <!-- About -->
+    <section id="about1a" class="about" style='background-color:cornflowerblue'>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" >
+               
+                    <h2 style='color:white;font-weight: bold;'>Real-time 911 calls Forecast (Montgomery County, PA) </h2>
+                    <h3 style='color:white; font-weight: bold;'>{{ time_now }}</h3>
+                     <form  action="/update" method="GET">
+                        <div>
+                        <button type="Submit" class="btn btn-dark btn-lg" style='text-align:center;' >Update Forecast</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+      <!-- About -->
+    <section id="about" class="about" >
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" >
+                    <img src="data:image/png;base64, {{ plot_url }}" style='width:600px'>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+   
+     <!-- About -->
+    <section id="about" class="about" style='background-color:cornflowerblue'>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" >
+                    <h2 style='color:white;font-weight: bold;'>911 Forecast Presentation,  </h2>
+                    <h3 style='color:white; font-weight: bold;'>Insight June 2017</h3>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+    
+    <iframe src="https://docs.google.com/presentation/d/1E4fKV6HcgxVQU4mEzqgdyN2__ZCcEjjqKU4eVseyGMY/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+   
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong></strong>
+                    </h4>
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </div>
+        <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+    </footer>
+
+    <!-- jQuery -->
+    
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script  src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    //#to-top button appears after scrolling
+    var fixed = false;
+    $(document).scroll(function() {
+        if ($(this).scrollTop() > 250) {
+            if (!fixed) {
+                fixed = true;
+                // $('#to-top').css({position:'fixed', display:'block'});
+                $('#to-top').show("slow", function() {
+                    $('#to-top').css({
+                        position: 'fixed',
+                        display: 'block'
+                    });
+                });
+            }
+        } else {
+            if (fixed) {
+                fixed = false;
+                $('#to-top').hide("slow", function() {
+                    $('#to-top').css({
+                        display: 'none'
+                    });
+                });
+            }
+        }
+    });
+    // Disable Google Maps scrolling
+    // See http://stackoverflow.com/a/25904582/1607849
+    // Disable scroll zooming and bind back the click event
+    var onMapMouseleaveHandler = function(event) {
+        var that = $(this);
+        that.on('click', onMapClickHandler);
+        that.off('mouseleave', onMapMouseleaveHandler);
+        that.find('iframe').css("pointer-events", "none");
+    }
+    var onMapClickHandler = function(event) {
+            var that = $(this);
+            // Disable the click handler until the user leaves the map area
+            that.off('click', onMapClickHandler);
+            // Enable scrolling zoom
+            that.find('iframe').css("pointer-events", "auto");
+            // Handle the mouse leave event
+            that.on('mouseleave', onMapMouseleaveHandler);
+        }
+        // Enable map zooming with mouse scroll when the user clicks the map
+    $('.map').on('click', onMapClickHandler);
+    </script>
+
+</body>
+
+</html>
