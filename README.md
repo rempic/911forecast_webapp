@@ -8,6 +8,7 @@ The web app was developped in Flask. The time-series model was developped in pyt
 
 
 
+<img src="img_2.png" alt="">
 
 
 
