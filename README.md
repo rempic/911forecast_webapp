@@ -3,6 +3,10 @@ During my Insight Data Science project I developed an application to improve eme
 
 The web app was developed in Flask. The time-series model was developed in python by using sklearn toolkit and included in  insightmodel.py
 
+# System architecture
+<img src="system_architecture.png" alt="">
+
+
 
 <img src="img_1.png" alt="">
 
